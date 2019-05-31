@@ -1,0 +1,65 @@
+Scripts for simulating the neuron and cardiac cell models and producing Figure 1 and 2.
+(CC BY 3.0) Tuomo Maki-Marttunen 2016
+
+To run the scripts, run command 'runme' in MATLAB. Note that you may have to run the
+NEURON simulations from command line instead of running them through MATLAB. This can
+be done by runnning 'sh runme.sh' in folders hay/ and almog/.
+
+Folders included:
+
+hay/: Scripts and files for running the Hay model (Hay E, Hill S, Schuermann F, Markram H, and Segev I (2011): Models of neocortical layer 5b pyramidal cells capturing a wide range of dendritic and perisomatic active properties, PLoS Comput Biol 7: e1002107)
+-Most of the files based on the implementation given in https://senselab.med.yale.edu/modeldb/showModel.cshtml?model=139653
+-Files specific to this entry:
+       hay/calcifcurves.py: Python script with NEURON interface to calculate the f-I curves
+       hay/calcsteadystates.py: Python script with NEURON interface to calculate the membrane potential time courses for steady-state firing
+       hay/findDCshortthreshold.py: Python script with NEURON interface to find the smallest DC amplitudes for inducing a spike
+       hay/mutation_stuff.py: Table of mutations
+       hay/mytools.py: Generic tools for e.g. determining spike times
+       hay/collectfig1.py: Script for refining the results for Figure 1
+       hay/collectfig2.py: Script for refining the results for Figure 2
+       hay/runme.sh: Shell script for running the Hay-model simulation part from runme.m
+-Pre-calculated data:
+       hay/fig1_curves.mat: MATLAB data file for plotting the Hay model results for Figure 1 (only the results that are heaviest to simulate are included)
+       hay/fig2_curves.mat: MATLAB data file for plotting the Hay model results for Figure 2 (only the results that are heaviest to simulate are included)
+       
+almog/: Scripts and files for running the Almog model (Almog M and Korngreen A (2014): A quantitative description of dendritic conductances and its application to dendritic excitation in layer 5 pyramidal neurons, J Neurosci 34.1: 182-196)
+-Most of the files based on the implementation given in https://senselab.med.yale.edu/modeldb/showModel.cshtml?model=151825
+-Files specific to this entry:
+       almog/calcifcurves.py: Python script with NEURON interface to calculate the f-I curves
+       almog/calcsteadystates.py: Python script with NEURON interface to calculate the membrane potential time courses for steady-state firing
+       almog/findDCshortthreshold.py: Python script with NEURON interface to find the smallest DC amplitudes for inducing a spike
+       almog/mutation_stuff.py: Table of mutations
+       almog/mytools.py: Generic tools for e.g. determining spike times
+       almog/collectfig1.py: Script for refining the results for Figure 1
+       almog/collectfig2.py: Script for refining the results for Figure 2
+       almog/runme.sh: Shell script for running the Almog-model simulation part from runme.m
+-Pre-calculated data:
+       almog/fig1_curves.mat: MATLAB data file for plotting the Almog model results for Figure 1 (only the results that are heaviest to simulate are included)
+       almog/fig2_curves.mat: MATLAB data file for plotting the Almog model results for Figure 2 (only the results that are heaviest to simulate are included)
+
+kharche/: Scripts and files for running the Kharche model (Kharche S, Yu J, Lei M, and Zhang H (2011): A mathematical model of action potentials of mouse sinoatrial node cells with molecular bases, Am J Physiol-Heart Circ Physiol 301.3: H945-H963)
+-Model implementation based on the previous entry (C-code) https://senselab.med.yale.edu/ModelDB/ShowModel.cshtml?model=141274
+-Order of certain variable updates changed in kharche_SA.m w.r.t. the original code in order to give a state update that is consistent across different dt
+       calcrates_kharche.m: MATLAB script for simulating the cells implemented with variants
+       getDefVals_kharche.m: MATLAB function that returns the default model parameters
+       getMT_kharche.m: MATLAB function that returns the table of mutations
+       kharche_SA.m: MATLAB function that simulates the SANC model and returns the membrane potential time courses and other data
+       runcontrol_kharche.m: MATLAB script for running the control SANC model
+
+severi/: Scripts and files for running the Severi model (Severi S, Fantini M, Charawi LA, and DiFrancesco D (2012): An updated computational model of rabbit sinoatrial action potential to investigate the mechanisms of heart rate modulation, J Physiol 590.18: 4483-4499)
+-Model implementation based on the CellML entry https://models.physiomeproject.org/w/sseveri/severi_fantini_charawi_difrancesco_2012
+       calcrates_severi.m: MATLAB script for simulating the cells implemented with variants
+       getDefVals_severi.m: MATLAB function that returns the default model parameters
+       getMT_severi.m: MATLAB function that returns the table of mutations
+       severi_SA.m: MATLAB function that simulates the SANC model and returns the membrane potential time courses and other data
+       runcontrol_severi.m: MATLAB script for running the control SANC model
+
+
+Files in the main folder:
+
+runme.m: Script for running all required simulations to draw Figure 1 and 2
+drawfig1: Script for drawing Figure 1
+drawfig2: Script for drawing Figure 2
+getMT_kharche.m, getgenenames.m: Auxiliary MATLAB files for the mutation data
+interpolate.m, interpolate_multidim.m, membpotderivs.m, subplottight2.m: Auxiliary MATLAB tools
+
