@@ -63,3 +63,7 @@ drawfig2: Script for drawing Figure 2
 getMT_kharche.m, getgenenames.m: Auxiliary MATLAB files for the mutation data
 interpolate.m, interpolate_multidim.m, membpotderivs.m, subplottight2.m: Auxiliary MATLAB tools
 
+Changelog
+---------
+2022-12: Fix 9.0.0 upcoming error: curr used as both variable and function in file epsp.mod
+
